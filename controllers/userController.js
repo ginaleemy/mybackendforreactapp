@@ -3,8 +3,8 @@ const Post = require("../models/Post")
 const Follow = require("../models/Follow")
 const jwt = require("jsonwebtoken")
 
-// how long a token lasts before expiring orginal:365d
-const tokenLasts = "30s"
+// how long a token lasts before expiring
+const tokenLasts = "365d"
 
 exports.apiGetPostsByUsername = async function (req, res) {
   try {
@@ -121,17 +121,6 @@ exports.ifUserExists = function (req, res, next) {
     })
     .catch(function (e) {
       res.json(false)
-    })
-}
-
-exports.findAllProfile = function (req, res, next) {
-  User.findAll(req.params.username)
-    .then(function (userDocuments) {
-      req.profileUser = userDocuments // Assign all user documents to req.profileUser
-      next() // Proceed to the next middleware
-    })
-    .catch(function (e) {
-      res.status(500).json({ error: e.message }) // Send error message if any error occurs
     })
 }
 

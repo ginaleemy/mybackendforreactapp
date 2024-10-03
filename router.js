@@ -29,10 +29,6 @@ apiRouter.get("/profile/:username/posts", userController.ifUserExists, userContr
 apiRouter.get("/profile/:username/followers", userController.ifUserExists, userController.profileFollowers)
 apiRouter.get("/profile/:username/following", userController.ifUserExists, userController.profileFollowing)
 
-//All Profile
-apiRouter.post("/findAllProfile/:username", userController.findAllProfile, userController.sharedProfileData, userController.profileBasicData)
-apiRouter.get("/findAllProfilePosts/:username/posts", userController.findAllProfile, userController.apiGetPostsByUsername)
-
 // follow routes
 apiRouter.post("/addFollow/:username", userController.apiMustBeLoggedIn, followController.apiAddFollow)
 apiRouter.post("/removeFollow/:username", userController.apiMustBeLoggedIn, followController.apiRemoveFollow)
